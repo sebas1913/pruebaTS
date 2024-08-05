@@ -5,10 +5,16 @@ const url = 'https://api-posts.codificando.xyz/auth/login';
 const loginForm = document.querySelector("#loginForm") as HTMLFormElement;
 const emailUser = document.querySelector("#emailUser") as HTMLInputElement;
 const passwordUser = document.querySelector("#passwordUser") as HTMLInputElement;
-// const loading = document.querySelector("#loading") as HTMLDivElement;
+const loading = document.querySelector("#loading") as HTMLDivElement;
+
+
+
+
 
 loginForm.addEventListener("submit", async (event : Event) => {
   event.preventDefault();
+loading.style.display = "flex"; 
+
   
   const user = {
     email : emailUser.value,
@@ -25,9 +31,11 @@ loginForm.addEventListener("submit", async (event : Event) => {
 
   sessionStorage.setItem('token', token.token);
 
+
   const getToken = sessionStorage.getItem('token');
 
   if (getToken) {
+
     window.location.href = '../views/Home.html'
     alert('se inició sesión');
   }
