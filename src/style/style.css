@@ -9,30 +9,30 @@
   --font: "Poppins", sans-serif;;
 }
 
-#register-form, #loginForm {
+form {
   display: flex;
   flex-direction: column;
   width: 300px;
-  margin: 8% auto;
+  margin: 5% auto;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(27, 27, 27, 0.4);
 }
 
-#register-form h1, #loginForm  h1{
+form  h1{
   text-align: center;
   font-size: 45px;
   color: var(--color-orange);
 }
 
-#register-form a, #loginForm a{
+form a{
   text-align: center;
   color: var(--color-orange);
   margin-top: 10px;
   font-size: 16px;
 }
 
-#register-form button, #loginForm button {
+form button {
   padding: 8px;
   background-color: var(--color-orange);
   color: white;
@@ -42,7 +42,7 @@
   cursor: pointer;
   width: 100%;
 }
-#register-form input, #loginForm  input {
+form input {
   margin-bottom: 10px;
   padding: 8px;
   border: 1px solid gray;
@@ -55,6 +55,8 @@ nav {
   text-align: center;
   align-items: center;
   justify-content: space-around;
+  background-color: rgb(238, 238, 238);
+  padding: 20px;
 }
 
 #nav-options {
