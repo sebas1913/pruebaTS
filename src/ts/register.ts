@@ -4,7 +4,6 @@ import { IUserRegister, IUserVerification } from "../models/IRegister";
 const formRegister = document.querySelector("#register-form") as HTMLFormElement;
 const userEmail = document.querySelector("#email") as HTMLInputElement;
 const userPassword = document.querySelector("#password") as HTMLInputElement;
-const userPasswordConfirmation = document.querySelector("#password-confirmation") as HTMLInputElement;
 
 const url : string = 'https://api-posts.codificando.xyz/users/register';
 
@@ -18,7 +17,6 @@ const verifications = async () => {
     const newUser : IUserVerification = {
         email : userEmail.value,
         password : userPassword.value,
-        passwordConfirmation : userPasswordConfirmation.value
     }
 
     const userVerifications = new UserVerifications;
@@ -30,7 +28,6 @@ const verifications = async () => {
         return;
     }
 
-    
     await createUser();
 }
 

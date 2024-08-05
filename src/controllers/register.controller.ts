@@ -26,20 +26,9 @@ export class UserVerifications {
 
     inputsVerification (user : IUserVerification) : boolean {
 
-        const {email, password, passwordConfirmation} = user;
+        const {email, password} = user;
 
-        if( !email || !password || !passwordConfirmation) {
-            return false;
-        }
-        
-        return true;
-    }
-
-    passwordVerification (user : IUserVerification) : boolean {
-
-        const {password, passwordConfirmation} = user;
-
-        if (password !== passwordConfirmation) { 
+        if( !email || !password) {
             return false;
         }
         

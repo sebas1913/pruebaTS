@@ -6,6 +6,5 @@ export interface IUserRegister { // se crea la interface para realizar la estruc
 export interface IUserVerification {
     email : string,
     password : string,
-    passwordConfirmation : string
 }
 
