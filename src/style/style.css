@@ -9,30 +9,30 @@
   --font: "Poppins", sans-serif;;
 }
 
-#register-form, #loginForm {
+form {
   display: flex;
   flex-direction: column;
   width: 300px;
-  margin: 8% auto;
+  margin: 5% auto;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(27, 27, 27, 0.4);
 }
 
-#register-form h1, #loginForm  h1{
+form  h1{
   text-align: center;
   font-size: 45px;
   color: var(--color-orange);
 }
 
-#register-form a, #loginForm a{
+form a{
   text-align: center;
   color: var(--color-orange);
   margin-top: 10px;
   font-size: 16px;
 }
 
-#register-form button, #loginForm button {
+form button {
   padding: 8px;
   background-color: var(--color-orange);
   color: white;
@@ -42,7 +42,7 @@
   cursor: pointer;
   width: 100%;
 }
-#register-form input, #loginForm  input {
+form input {
   margin-bottom: 10px;
   padding: 8px;
   border: 1px solid gray;
@@ -55,6 +55,8 @@ nav {
   text-align: center;
   align-items: center;
   justify-content: space-around;
+  background-color: rgb(238, 238, 238);
+  padding: 20px;
 }
 
 #nav-options {
@@ -88,9 +90,10 @@ nav h1{
 #nav-options li button {
   border: none;
   background: none ;
-  color: black;
-  font-size: large;
+  font-size: 20px;
   cursor: pointer;
+  color: var(--color-orange);
+  padding: 10px 20px;
 }
 
 #nav-title {
@@ -101,6 +104,7 @@ nav h1{
   text-decoration: none;
   color: var(--color-orange)
 }
+
 
 #loading {
   position: fixed;
@@ -115,4 +119,41 @@ nav h1{
 }
 #loading img {
   width: 180px; /* Ajusta el tamaño del GIF */
+}
+
+.card-container {
+  width: 28%;
+  margin-left: 4%;
+  margin-bottom: 3%;
+  margin-top: 2%;
+  height: 450px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+}
+.card-container .img-card {
+  width: 100%;
+  height: 205px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.card-container .cardInfo-container {
+  padding: 15px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.card-container .cardInfo-container button{
+  border: 2px solid var(--color-orange);
+  border-radius: 5px;
+  background-color: transparent;
+  color: var(--color-orange);
+  font-size: 15px;
+  cursor: pointer;
+}
+.card-container .cardInfo-container button:hover{
+  background-color: var(--color-orange);
+  color: #fff;
 }

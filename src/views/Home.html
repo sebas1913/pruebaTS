@@ -3,9 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/src/style/style.css">
+    <title>Home</title>
 </head>
 <body>
-    <h1>Homeeeeeeeee</h1>
+    <header>
+        <nav>
+            <div id="nav-title">
+                <h1><a href="">Data Leaker Gates</a></h1>
+            </div>
+            <div id="nav-options">
+                <ul>
+                    <li>
+                        <button id="logout">Salir</button>                        
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="addPost-main">  
+        <section class="form-container">
+          <form id="addPost-form" action="">
+            <h1 class="addPost-title">Publicación</h2>
+
+             <!-- Input oculto con el ID para actualizar -->
+            <input 
+              type="hidden" 
+              id="post-id" 
+              value=""
+            />
+            <input
+              type="text"
+              id="new-post"
+              placeholder="Título"
+            />
+            <input
+              type="text"
+              id="new-description"
+              placeholder="Descripción"
+            />
+            <input
+              type="text"
+              id="new-img"
+              placeholder="Imagen"
+            />
+            <input
+              type="text"
+              id="new-app"
+              placeholder="Plataforma"
+            />
+            <div class="button-container">
+              <button type="submit" class="addPost-button">Agregar</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Contenedor donde se agregará las cards de los POST -->
+        <section id="card-section">
+
+        </section>
+      </main>
+
+      <script type="module" src="/src/controllers/home.ts"></script>
+      <script type="module" src="/src/controllers/addPost.ts"></script>
 </body>
 </html>
