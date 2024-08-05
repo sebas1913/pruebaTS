@@ -27,7 +27,6 @@ form.addEventListener('submit', async (event: Event) => {
     const postId = postIdInput.value; // Si se especifica un ID, se usará para actualizar la ciudad existente
 
     try { 
-
         // Creamos un objeto IPost con los datos del formulario
         const cityData: IPost = {
             title: titleName,
