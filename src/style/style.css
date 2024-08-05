@@ -90,9 +90,10 @@ nav h1{
 #nav-options li button {
   border: none;
   background: none ;
-  color: black;
-  font-size: large;
+  font-size: 20px;
   cursor: pointer;
+  color: var(--color-orange);
+  padding: 10px 20px;
 }
 
 #nav-title {
@@ -103,6 +104,7 @@ nav h1{
   text-decoration: none;
   color: var(--color-orange)
 }
+
 
 #loading {
   position: fixed;
