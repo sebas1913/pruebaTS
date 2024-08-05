@@ -26,11 +26,6 @@ export const Card = (props: IPost): HTMLElement => {
     const updateButton = document.createElement("button");
     updateButton.innerText = "Actualizar";
     updateButton.className = "update-button";
-
-    const deleteButton = document.createElement("button");
-    deleteButton.innerText = "Actualizar";
-    deleteButton.className = "delete-button";
-
     updateButton.addEventListener("click", () => {
         
         // Actualiza los valores del formulario
@@ -46,12 +41,17 @@ export const Card = (props: IPost): HTMLElement => {
         }
     });
 
-    deleteButton.addEventListener("click", async () => {
-        const eliminar = confirm('¿Deseas eliminar?');
-        if (eliminar) {
+    const deleteButton = document.createElement("button");
+    deleteButton.innerText = "Eliminar";
+    deleteButton.className = "delete-button";
+   deleteButton.addEventListener("click", async () => {
+        const url: string = 'https://api-posts.codificando.xyz';
+        const confirmDelete = confirm('¿Deseas eliminar?');
+        if (confirmDelete) {
             try {
-                const citiesController = new PostController('https://api-posts.codificando.xyz/');
-                await citiesController.deleteCities(`posts/${id}`);
+                const citiesController = new PostController(url);
+                await citiesController.deletePost(`${url}`,`${id}`);
+                console.log(`${citiesController.deletePost(`${url}`,`${id}`)}`);
                 cardContainer.remove();
             } catch (error) {
                 console.error("Error al eliminar la ciudad:", error);

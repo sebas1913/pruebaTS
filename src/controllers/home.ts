@@ -23,7 +23,7 @@ logoutButton.addEventListener('click', () => {
 
 async function showPost() {
     const postController = new PostController(url);
-    const post = await postController.getPost('posts');
+    const post = await postController.getPost();
     
     post.forEach((city: IPost) => {
         cardSection?.append(Card(city));

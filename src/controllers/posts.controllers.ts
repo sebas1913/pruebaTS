@@ -15,18 +15,18 @@ export class PostController {
         return data;
     }
 
-    async postPost(endPoint: string, dataCity: IPost) {
+    async postPost(endPoint: string, dataPost: IPost) {
         const response = await fetch(`${this.url}${endPoint}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(dataCity)
+            body: JSON.stringify(dataPost)
         });
 
-        console.log(response.status);
+        console.log(response);
 
-        if (response.status !== 201) {
+        if (response.status !== 200) {
             throw new Error(`No se puede publicar`);
         }
 
@@ -34,26 +34,20 @@ export class PostController {
         return data;
     }
 
-    async deleteCities(endPoint: string): Promise<IPost> {
-        const headers: Record<string, string> = {
-            "accept": "*/*",
-        };
-        const reqOptions: RequestInit = {
-            method: "DELETE",
-            headers: headers,
-        };
-
-        const response: Response = await fetch(`${this.url}${endPoint}`, reqOptions);
+    async deletePost(url: string, id: string): Promise<void> {
+        const response: Response = await fetch(`${url}/posts/${id}`, {
+            method: "DELETE"
+        });
 
         if (!response.ok) {
             throw new Error(`Error al eliminar la ciudad: ${response.statusText}`);
         }
 
-        const responseDelete: IPost = await response.json();
-        return responseDelete;
+        console.log('Ciudad eliminada exitosamente');
     }
 
-    async updateCities(id: string, endPoint: string, dataCity: IPost): Promise<IPost> {
+
+    async updatePost(id: string, endPoint: string, dataPost: IPost): Promise<IPost> {
         const headers: Record<string, string> = {
             "accept": "*/*",
             "Content-Type": "application/json",
@@ -62,7 +56,7 @@ export class PostController {
         const reqOptions: RequestInit = {
             method: "PATCH",
             headers: headers,
-            body: JSON.stringify(dataCity)
+            body: JSON.stringify(dataPost)
         };
 
         const response: Response = await fetch(`${this.url}${endPoint}${id}`, reqOptions);
@@ -73,7 +67,7 @@ export class PostController {
             throw new Error(`Error al actualizar la ciudad: ${response.statusText}`);
         }
 
-        const updatedCity: IPost = await response.json();
-        return updatedCity;
+        const updatedPost: IPost = await response.json();
+        return updatedPost;
     }
 }

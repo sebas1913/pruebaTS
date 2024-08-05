@@ -11,7 +11,7 @@ export interface IPost {
     // postUrl:                  string;
     multimediaUrl:            string;
     // creator:                  Creator;
-    id:                       number;
+    id?:                       number;
     // deletedAt:                null;
 }
 
