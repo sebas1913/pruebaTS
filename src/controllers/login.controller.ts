@@ -30,8 +30,11 @@ export class UserLogin {
             throw new Error('no se pudo iniciar sesión');
         }
 
-        // Convertimos la respuesta en formato JSON a un objeto IResponseLogin
-        const token : IResponseLogin = await response.json();
-        return token;
+        const responseData: IResponseLogin = await response.json();
+
+        // Almacena el correo del usuario en sessionStorage
+        sessionStorage.setItem('userEmail', data.email);
+
+        return responseData;
     }
 }

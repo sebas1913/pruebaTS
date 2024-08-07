@@ -7,42 +7,26 @@ const emailUser = document.querySelector("#emailUser") as HTMLInputElement;
 const passwordUser = document.querySelector("#passwordUser") as HTMLInputElement;
 const loading = document.querySelector("#loading") as HTMLDivElement;
 
+loginForm.addEventListener("submit", async (event: Event) => {
+    event.preventDefault();
+    loading.style.display = "flex"; 
 
+    const user = {
+        email: emailUser.value,
+        password: passwordUser.value
+    }
 
+    try {
+        const pageController = new UserLogin(url);
+        const response = await pageController.login(user);
 
-
-loginForm.addEventListener("submit", async (event : Event) => {
-  event.preventDefault();
-loading.style.display = "flex"; 
-
-  
-  const user = {
-    email : emailUser.value,
-    password : passwordUser.value
-  }
-
- try{
-  const pageController = new UserLogin(url);
-  const token = await pageController.login(user);
-
-  console.log(token);
-  
-
-
-  sessionStorage.setItem('token', token.token);
-
-
-  const getToken = sessionStorage.getItem('token');
-
-  if (getToken) {
-
-    window.location.href = '../views/Home.html'
-    alert('se inició sesión');
-  }
- }
- catch (error) {
-  alert(error);
-  window.location.href = 'index.html'
- }
-
-})
+        if (response) {
+            // Redirigir a la página de inicio después de iniciar sesión correctamente
+            window.location.href = '../views/Home.html';
+            alert('Se inició sesión');
+        }
+    } catch (error) {
+        alert(error);
+        window.location.href = 'index.html';
+    } 
+});

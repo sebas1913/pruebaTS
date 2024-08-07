@@ -24,38 +24,22 @@
     <main class="addPost-main">  
         <section class="form-container">
           <form id="addPost-form" action="">
-            <h1 class="addPost-title">Publicación</h2>
-
-             <!-- Input oculto con el ID para actualizar -->
-            <input 
-              type="hidden" 
-              id="post-id" 
-              value=""
-            />
-            <input
-              type="text"
-              id="new-post"
-              placeholder="Título"
-            />
-            <input
-              type="text"
-              id="new-description"
-              placeholder="Descripción"
-            />
-            <input
-              type="text"
-              id="new-img"
-              placeholder="Imagen"
-            />
-            <input
-              type="text"
-              id="new-app"
-              placeholder="Plataforma"
-            />
+            <input type="hidden" id="post-id" value="" />
+            <input type="text" id="new-post" placeholder="Título" />
+            <input type="text" id="new-description" placeholder="Descripción" />
+            <input type="text" id="new-img" placeholder="Imagen" />
+            <input type="text" id="new-app" placeholder="Plataforma" />
+            <input type="text" id="new-postUrl" placeholder="URL del Post" />
+            <input type="date" id="new-creationDate" placeholder="Fecha de Creación" />
+            <input type="date" id="new-estimatedPublicationDate" placeholder="Fecha de Publicación Estimada" />
+            <input type="text" id="new-status" placeholder="Estado" />
+            <input type="number" id="new-approvalPercentage" placeholder="Porcentaje de Aprobación" />
+            <input type="text" id="new-corrections" placeholder="Correcciones" />
             <div class="button-container">
-              <button type="submit" class="addPost-button">Agregar</button>
+                <button type="submit" class="addPost-button">Agregar</button>
             </div>
-          </form>
+        </form>
+        
         </section>
 
         <!-- Contenedor donde se agregará las cards de los POST -->

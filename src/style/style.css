@@ -126,11 +126,11 @@ nav h1{
 }
 
 .card-container {
-  width: 26%;
-  margin-left: 6%;
+  width: 28%;
+  margin-left: 4%;
   margin-bottom: 3%;
   margin-top: 2%;
-  height: 450px;
+  height: 600px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   display: inline-flex;

@@ -1,3 +1,4 @@
+// POST.CONTROLLER.TS
 import { IPost } from "../models/Iposts";
 
 export class PostController {
@@ -7,67 +8,56 @@ export class PostController {
         this.url = url;
     }
 
-    async getPost(): Promise<IPost> {
-        const response = await fetch(`${this.url}`);
-        const data = await response.json();
-        console.log(response.status);
-
-        return data;
-    }
-
-    async postPost(endPoint: string, dataPost: IPost) {
-        const response = await fetch(`${this.url}${endPoint}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(dataPost)
-        });
-
-        console.log(response);
-
-        if (response.status !== 200) {
-            throw new Error(`No se puede publicar`);
-        }
-
-        const data = await response.json();
-        return data;
-    }
-
-    async deletePost(url: string, id: string): Promise<void> {
-        const response: Response = await fetch(`${url}/posts/${id}`, {
-            method: "DELETE"
-        });
-
-        if (!response.ok) {
-            throw new Error(`Error al eliminar la ciudad: ${response.statusText}`);
-        }
-
-        console.log('Ciudad eliminada exitosamente');
-    }
-
-
-    async updatePost(id: string, endPoint: string, dataPost: IPost): Promise<IPost> {
-        const headers: Record<string, string> = {
-            "accept": "*/*",
-            "Content-Type": "application/json",
+    getHeaders() {
+        const userEmail = sessionStorage.getItem('userEmail');
+        return {
+            'Content-Type': 'application/json',
+            'x-user-email': userEmail || ''
         };
+    }
 
-        const reqOptions: RequestInit = {
-            method: "PATCH",
-            headers: headers,
-            body: JSON.stringify(dataPost)
-        };
+    async getPost(): Promise<IPost[]> {
+        const response = await fetch(this.url, {
+            method: 'GET',
+            headers: this.getHeaders()
+        });
+        return response.json();
+    }
 
-        const response: Response = await fetch(`${this.url}${endPoint}${id}`, reqOptions);
-        console.log(response);
-        
-
-        if (!response.ok) {
-            throw new Error(`Error al actualizar la ciudad: ${response.statusText}`);
+    async postPost(endPoint: string, data: IPost): Promise<void> {
+        try {
+            const response = await fetch(`${this.url}${endPoint}`, {
+                method: 'POST',
+                headers: this.getHeaders(),
+                body: JSON.stringify(data)
+            });
+    
+            if (!response.ok) {
+                // Puedes ajustar este mensaje según el error específico
+                const errorText = await response.text();
+                throw new Error(`Error al enviar el post: ${response.status} ${response.statusText} - ${errorText}`);
+            }
+    
+            console.log('Post agregado exitosamente');
+        } catch (error) {
+            console.error('Error en postPost:', error);
         }
+    }
+    
 
-        const updatedPost: IPost = await response.json();
-        return updatedPost;
+    async updatePost(endPoint: string, postId: string, data: IPost): Promise<void> {
+        await fetch(`${this.url}${endPoint}/${postId}`, {
+            method: 'PATCH',
+            headers: this.getHeaders(),
+            body: JSON.stringify(data)
+        });
+    }
+    
+
+    async deletePost(endPoint: string, postId: string): Promise<void> {
+        await fetch(`${endPoint}/${postId}`, {
+            method: 'DELETE',
+            headers: this.getHeaders()
+        });
     }
 }

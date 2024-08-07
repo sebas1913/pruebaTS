@@ -3,7 +3,7 @@ import { Card } from "./card";
 import { PostController } from "./posts.controllers";
 
 const logoutButton = document.querySelector("#logout") as HTMLButtonElement;
-const session = sessionStorage.getItem('token');
+const session = sessionStorage.getItem('userEmail');
 
 const url = 'https://api-posts.codificando.xyz/posts';
 
@@ -17,7 +17,7 @@ const cardSection = document.querySelector('#card-section') as HTMLElement;
 })();
 
 logoutButton.addEventListener('click', () => {
-    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('userEmail');
     window.location.href = '/';
 });
 
